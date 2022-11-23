@@ -30,7 +30,7 @@ function About({}: Props) {
       >
         <Image
           className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover
-        md:rounded-lg md:w-64 md:h-95 xl:w-[500px] xl:h-[600px]"
+        md:rounded-lg md:w-64 md:h-96 xl:w-[400px] xl:h-[500px]"
           src={AboutMePicture}
           alt=""
           priority
@@ -43,7 +43,7 @@ function About({}: Props) {
           <span className="underline decoration-[#F7AB0A]/50">little</span>{" "}
           background
         </h4>
-        <p className="text-base">LOREM IPSUM</p>
+        <p className="text-base text-justify">LOREM IPSUM</p>
       </div>
     </motion.div>
   );
