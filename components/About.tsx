@@ -1,12 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-// TODO: change to other PIC
-import AboutMePicture from "../public/About_me_pic.jpg";
-import Image from "next/image";
+import { PageInfo } from "../typings";
+import { urlFor } from "../sanity";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-function About({}: Props) {
+function About({ pageInfo }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -19,7 +20,7 @@ function About({}: Props) {
         About
       </h3>
 
-      <motion.div
+      <motion.img
         initial={{
           x: -200,
           opacity: 0,
@@ -27,15 +28,11 @@ function About({}: Props) {
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
-      >
-        <Image
-          className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover
+        className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover
         md:rounded-lg md:w-64 md:h-96 xl:w-[400px] xl:h-[500px]"
-          src={AboutMePicture}
-          alt=""
-          priority
-        />
-      </motion.div>
+        src={urlFor(pageInfo?.profilePic).url()}
+        alt=""
+      />
 
       <div className="space-y-10 px-0 md:px-10">
         <h4 className="text-4xl font-semibold">
@@ -43,7 +40,9 @@ function About({}: Props) {
           <span className="underline decoration-[#F7AB0A]/50">little</span>{" "}
           background
         </h4>
-        <p className="text-base text-justify">LOREM IPSUM</p>
+        <p className="text-base text-justify">
+          {pageInfo?.backgroundInformation}
+        </p>
       </div>
     </motion.div>
   );
